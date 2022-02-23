@@ -1,0 +1,42 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @restaurant.name %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @restaurant.address %>
+</p>
+
+<p>
+  <strong>Category:</strong>
+  <%= @restaurant.category %>
+</p>
+
+<p>
+  <strong>Phone:</strong>
+  <%= @restaurant.phone_number %>
+</p>
+
+<h4>Add Review to restaurant <%= @restaurant.name %></h4>
+<%= simple_form_for([@restaurant, @review]) do |f| %>
+  <%= f.input :rating %>
+  <%= f.input :content %>
+  <%= f.button :submit, class: 'btn btn-outline-success mb-4' %>
+<% end %>
+
+<% if @restaurant.reviews.length > 0 %>
+  <div class="card p-4 rounded mt-4 mb-3 w-50">
+    <h4 class="mb-3">Reviews</h4>
+    <% @restaurant.reviews.each do |review| %>
+      <div class="alert alert-secondary pl-2">
+        <p><strong>Stars: </strong> <%= review.rating %></p>
+        <p><strong>Describe: </strong> <%= review.content %></p>
+      </div>
+    <% end %>
+  </div>
+<% end %>
+
+<%= link_to 'Back', restaurants_path, class: 'btn btn-outline-secondary mb-4'%>
