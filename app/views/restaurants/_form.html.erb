@@ -3,10 +3,10 @@
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
   <div class="form-inputs">
-    <%= f.input :name %>
-    <%= f.input :address %>
-    <%= f.input :category %>
-    <%= f.input :phone_number %>
+    <%= f.input :name, placeholder: 'Your name here...' %>
+    <%= f.input :address, placeholder: 'Your address here...' %>
+    <%= f.input :category, collection: %w(chinese italian japanese french belgian), selected: 'chinese' %>
+    <%= f.input :phone_number, placeholder: 'Your phone number here...'%>
   </div>
 
   <div class="form-actions">
